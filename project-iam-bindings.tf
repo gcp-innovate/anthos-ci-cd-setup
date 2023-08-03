@@ -55,8 +55,8 @@ module "project-iam-bindings" {
       "serviceAccount:${google_service_account.gke_workload_development.email}",
       "serviceAccount:${google_service_account.gke_workload_staging.email}",
       "serviceAccount:${google_service_account.gke_workload_production.email}",
-      "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
-      "serviceAccount:${google_service_account.cloud_build_pr.email}",
+      "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com",
+      "serviceAccount:${google_service_account.cloud_build_pr.email}"
       #"serviceAccount:${google_service_account.cloud_deploy.email}"
     ],
     "roles/gkehub.viewer" = 
