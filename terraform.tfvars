@@ -18,3 +18,5 @@ zone = "us-east4-b"
 repo_owner = "GoogleCloudPlatform"
 sync_repo = "bank-of-anthos"
 sync_branch = "main"
+
+

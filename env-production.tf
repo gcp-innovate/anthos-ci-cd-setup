@@ -71,7 +71,7 @@ resource "google_service_account_iam_member" "gke_workload_production_identity" 
     module.gke_production
   ]
 }
-
+/*
 # CloudSQL Postgres production instance 
 module "cloudsql_production" {
   source = "GoogleCloudPlatform/sql-db/google//modules/postgresql"
@@ -102,6 +102,7 @@ module "cloudsql_production" {
   user_name     = "admin"
   user_password = "admin" # this is a security risk - do not do this for real world use-cases!
 }
+*/
 
 # create fleet membership for production GKE cluster
 resource "google_gke_hub_membership" "production" {
@@ -151,7 +152,7 @@ resource "google_gke_hub_feature_membership" "acm_production" {
   }
   provider = google-beta
 }
-
+/*
 resource "google_compute_global_address" "production_ip" {
   name = "bank-of-anthos-ip" # hardcoded in frontend ingress k8s manifest
 
@@ -222,3 +223,4 @@ resource "google_compute_ssl_policy" "production_ssl_policy" {
     module.enabled_google_apis,
   ]
 }
+*/

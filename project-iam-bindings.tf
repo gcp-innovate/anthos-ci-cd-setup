@@ -37,11 +37,12 @@ module "project-iam-bindings" {
         "serviceAccount:${google_service_account.gke_workload_staging.email}",
         "serviceAccount:${google_service_account.gke_workload_production.email}",
         "serviceAccount:${google_service_account.cloud_build_pr.email}",
-        "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com",
-        "serviceAccount:${google_service_account.cloud_deploy.email}"
-      ],
-      local.cloud_build_sas
+        "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"#,
+        #"serviceAccount:${google_service_account.cloud_deploy.email}"
+      ]#,
+      #local.cloud_build_sas
     ),
+    /*
     "roles/cloudbuild.builds.builder" = setunion(
       [
         "serviceAccount:${data.google_project.project.number}@cloudbuild.gserviceaccount.com",
@@ -49,17 +50,24 @@ module "project-iam-bindings" {
       ],
       local.cloud_build_sas
     ),
+    */
     "roles/gkehub.gatewayEditor" = [
+      "serviceAccount:${google_service_account.gke_workload_development.email}",
+      "serviceAccount:${google_service_account.gke_workload_staging.email}",
+      "serviceAccount:${google_service_account.gke_workload_production.email}",
+      "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
       "serviceAccount:${google_service_account.cloud_build_pr.email}",
-      "serviceAccount:${google_service_account.cloud_deploy.email}"
+      #"serviceAccount:${google_service_account.cloud_deploy.email}"
     ],
-    "roles/gkehub.viewer" = setunion(
-      local.cloud_build_sas,
+    "roles/gkehub.viewer" = 
       [
-        "serviceAccount:${google_service_account.cloud_build_pr.email}",
-        "serviceAccount:${google_service_account.cloud_deploy.email}"
+      "serviceAccount:${google_service_account.gke_workload_development.email}",
+      "serviceAccount:${google_service_account.gke_workload_staging.email}",
+      "serviceAccount:${google_service_account.gke_workload_production.email}",
+      "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com",
+      "serviceAccount:${google_service_account.cloud_build_pr.email}"
       ],
-    ),
+    /*
     "roles/clouddeploy.releaser" = local.cloud_build_sas,
     "roles/container.developer" = [
       "serviceAccount:${google_service_account.cloud_build_pr.email}",
@@ -75,3 +83,4 @@ module "project-iam-bindings" {
     ]
   }
 }
+*/

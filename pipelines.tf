@@ -13,6 +13,7 @@
 # limitations under the License.
 
 # user-defined module setting up a CloudBuild + CloudDeploy CICD pipeline
+/*
 module "ci-cd-pipeline" {
   source = "./modules/ci-cd-pipeline"
 
@@ -141,12 +142,12 @@ resource "google_storage_bucket_object" "cache" {
     ]
   }
 }
-
+*/
 # service_account for PRs
 resource "google_service_account" "cloud_build_pr" {
   account_id = "cloud-build-pr"
 }
-
+/*
 # give CloudBuild SA access to skaffold cache
 resource "google_storage_bucket_iam_member" "build_cache" {
   bucket = google_storage_bucket.build_cache_pr.name
@@ -177,3 +178,4 @@ resource "google_cloudbuild_trigger" "ci-pr" {
   }
   service_account = google_service_account.cloud_build_pr.id
 }
+*/
