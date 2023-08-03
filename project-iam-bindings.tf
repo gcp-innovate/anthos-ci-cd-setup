@@ -21,19 +21,19 @@ module "project-iam-bindings" {
   bindings = {
     "roles/cloudtrace.agent" = [
       "serviceAccount:${google_service_account.gke_workload_development.email}",
-      "serviceAccount:${google_service_account.gke_workload_staging.email}",
+      #"serviceAccount:${google_service_account.gke_workload_staging.email}",
       "serviceAccount:${google_service_account.gke_workload_production.email}",
       "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
     ],
     "roles/monitoring.metricWriter" = [
       "serviceAccount:${google_service_account.gke_workload_development.email}",
-      "serviceAccount:${google_service_account.gke_workload_staging.email}",
+      #"serviceAccount:${google_service_account.gke_workload_staging.email}",
       "serviceAccount:${google_service_account.gke_workload_production.email}",
       "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
     ],
     "roles/logging.logWriter" = [
         "serviceAccount:${google_service_account.gke_workload_development.email}",
-        "serviceAccount:${google_service_account.gke_workload_staging.email}",
+        #"serviceAccount:${google_service_account.gke_workload_staging.email}",
         "serviceAccount:${google_service_account.gke_workload_production.email}",
         "serviceAccount:${google_service_account.cloud_build_pr.email}",
         "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
@@ -41,14 +41,14 @@ module "project-iam-bindings" {
       ],
     "roles/gkehub.gatewayEditor" = [
       "serviceAccount:${google_service_account.gke_workload_development.email}",
-      "serviceAccount:${google_service_account.gke_workload_staging.email}",
+      #"serviceAccount:${google_service_account.gke_workload_staging.email}",
       "serviceAccount:${google_service_account.gke_workload_production.email}",
       "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com",
       "serviceAccount:${google_service_account.cloud_build_pr.email}"
       ],
     "roles/gkehub.viewer" =  [
       "serviceAccount:${google_service_account.gke_workload_development.email}",
-      "serviceAccount:${google_service_account.gke_workload_staging.email}",
+     # "serviceAccount:${google_service_account.gke_workload_staging.email}",
       "serviceAccount:${google_service_account.gke_workload_production.email}",
       "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com",
       "serviceAccount:${google_service_account.cloud_build_pr.email}"
